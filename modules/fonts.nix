@@ -4,7 +4,7 @@
     jetbrains-mono
     font-awesome
     noto-fonts
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     terminus_font
     nerd-fonts.anonymice
     nerd-fonts.iosevka-term

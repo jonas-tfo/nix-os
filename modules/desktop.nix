@@ -2,13 +2,18 @@
 {
   programs.niri.enable = true;
 
-  programs.dank-material-shell.enable = true;
-
-  services.displayManager.sddm = {
+  programs.dank-material-shell = {
     enable = true;
-    wayland.enable = true;
+    systemd.enable = true;          # runs DMS as a user service, tied to the graphical session
+      # niri.includes = {               # writes the niri integration files + an include into config.kdl
+      #   filesToInclude = [ "binds" "colors" "layout" "outputs" ];
+      # };
   };
 
+  services.xserver.enable = true;
+  services.desktopManager.plasma6.enable = true;
+  services.displayManager.plasma-login-manager.enable = true;
+  
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];

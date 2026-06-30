@@ -9,8 +9,8 @@ in
   environment.systemPackages = with pkgs; [
     # Core CLI
     git curl wget unzip stow
-    ripgrep fd jq
-    tmux neovim kitty
+    ripgrep fd jq eza
+    tmux neovim kitty alacritty
     zoxide fzf
     btop htop fastfetch tree
     inotify-tools dos2unix socat ddcutil
@@ -18,14 +18,15 @@ in
     xdg-utils
 
     # Wayland / niri
-    swww
+    awww
     grim slurp wl-clipboard
-    rofi-wayland
+    rofi
     brightnessctl playerctl
     matugen cliphist
     nwg-look
     qt5.qtwayland qt6.qtwayland
     xwayland-satellite
+    ly
 
     # Tray / power / network applets
     pavucontrol
@@ -45,6 +46,7 @@ in
     sioyek
     obsidian
     ncspot
+    sioyek
 
     # Java + databases
     jdk
@@ -58,6 +60,7 @@ in
     websocat
     yazi
     bluetui
+    claude-code
 
     # Deno / rclone
     deno
