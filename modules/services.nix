@@ -19,6 +19,9 @@
   services.power-profiles-daemon.enable = false;
   services.tlp.enable = true;
 
+  services.openssh.enable = true;
+
+
   # mariadb at boot
   services.mysql = {
     enable = true;

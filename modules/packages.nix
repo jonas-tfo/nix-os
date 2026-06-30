@@ -1,9 +1,19 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   pythonEnv = pkgs.python3.withPackages (ps: with ps; [
     ipython
     pip
   ]);
+
+  sioyekWrapped = pkgs.symlinkJoin {
+    name = "sioyek";
+    paths = [ pkgs.sioyek ];
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/sioyek \
+        --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ pkgs.pipewire ]}
+    '';
+  };
 in
 {
   environment.systemPackages = with pkgs; [
@@ -43,10 +53,9 @@ in
     thunderbird
     libreoffice-fresh
     vlc
-    sioyek
+    sioyekWrapped
     obsidian
     ncspot
-    sioyek
 
     # Java + databases
     jdk
@@ -61,6 +70,8 @@ in
     yazi
     bluetui
     claude-code
+    syncthing
+    sesh
 
     # Deno / rclone
     deno
